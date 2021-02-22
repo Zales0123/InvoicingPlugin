@@ -9,12 +9,13 @@ use Sylius\InvoicingPlugin\Entity\InvoiceInterface;
 use Sylius\InvoicingPlugin\Model\InvoicePdf;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Config\FileLocatorInterface;
+use Twig\Environment;
 
 final class InvoicePdfFileGenerator implements InvoicePdfFileGeneratorInterface
 {
     private const FILE_EXTENSION = '.pdf';
 
-    /** @var EngineInterface */
+    /** @var Environment */
     private $templatingEngine;
 
     /** @var GeneratorInterface */
@@ -30,7 +31,7 @@ final class InvoicePdfFileGenerator implements InvoicePdfFileGeneratorInterface
     private $invoiceLogoPath;
 
     public function __construct(
-        EngineInterface $templatingEngine,
+        Environment $templatingEngine,
         GeneratorInterface $pdfGenerator,
         FileLocatorInterface $fileLocator,
         string $template,
